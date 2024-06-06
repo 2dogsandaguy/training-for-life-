@@ -4,7 +4,7 @@
   "description": "This is to keep my life orginized and in order",
   "main": "server.js",
   "scripts": {
-    "start": "node server/server.js",
+    "start": "node server.js",
     "dev": "concurrently \"cd server && npm run watch\" \"cd client && npm run dev\"",
     "install": "cd server && npm i && cd ../client && npm i",
     "build": "cd client && npm run build",
