@@ -3,8 +3,8 @@ import { useState } from "react";
 import { Link, useNavigate } from 'react-router-dom';
 import sky from '../../../public/images/perfect-sky.jpg';
 import { useMutation } from "@apollo/client";
-// import { LOGIN_USER } from "../../utils/mutations";
-// import Auth from '../../utils/auth';
+import { LOGIN_USER } from "../../utils/mutations";
+import Auth from '../../utils/auth';
 import "./Login.css"; // Update the path if needed
 
 function Login() {
@@ -12,7 +12,7 @@ function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  // const [login] = useMutation(LOGIN_USER);
+  const [login] = useMutation(LOGIN_USER);
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);

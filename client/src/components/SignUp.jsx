@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useMutation } from '@apollo/client';
-// import { ADD_USER } from '../../utils/mutations';
+import { ADD_USER } from '../../utils/mutations';
 import './SignUp.css';
 import { Link, useNavigate } from 'react-router-dom';
 import Sky from "./../../../public/images/perfect-sky.jpg";
@@ -10,7 +10,7 @@ function SignUp() {
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
 
-//   const [addUser] = useMutation(ADD_USER);
+  const [addUser] = useMutation(ADD_USER);
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
