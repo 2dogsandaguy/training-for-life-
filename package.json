@@ -2,7 +2,7 @@
   "name": "life-orginzer",
   "version": "1.0.0",
   "description": "This is to keep my life orginized and in order",
-  "main": "server/server.js",
+  "main": "server.js",
   "scripts": {
     "start": "node server/server.js",
     "dev": "concurrently \"cd server && npm run watch\" \"cd client && npm run dev\"",
@@ -34,7 +34,7 @@
     "type": "git",
     "url": "git+https://github.com/2dogsandaguy/training-for-life-.git"
   },
-  "author": "robert frisc",
+  "author": "robert frisco",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/2dogsandaguy/training-for-life-/issues"

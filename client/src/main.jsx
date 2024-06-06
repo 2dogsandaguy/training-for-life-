@@ -6,6 +6,7 @@ import NotFound from './NotFound'; // Assuming NotFound is in the same directory
 import Home from './components/Home'; //
 import Login from './components/Login';
 import Seclude from './components/Seclude';
+import SignUp from './components/SignUp';
 
 const router = createBrowserRouter([
     {
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
         {
           path: "Seclude",
           element: <Seclude />
+        },
+        {
+          path: "SignUp",
+          element: <SignUp />
         }
       ],
     },

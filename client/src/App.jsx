@@ -5,7 +5,8 @@ import { setContext } from '@apollo/client/link/context';
 import Home from './components/Home';
 import Login from './components/Login';
 import Profile from './components/Profile';
-import Seclude from './components/Seclude'; 
+import Seclude from './components/Seclude';
+import SignUp from './components/SignUp'; 
 const httpLink = createHttpLink({
   uri: '/graphql',
   cache: new InMemoryCache(),
@@ -39,7 +40,8 @@ function App() {
           <Route path="*" element={<Home />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="seclude" element={<Seclude />} />
-          
+          <Route path="signUp" element={<SignUp />} />
+
         </Routes>
       </Router>
     </ApolloProvider>
