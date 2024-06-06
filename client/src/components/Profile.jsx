@@ -1,6 +1,7 @@
 import './Home.css'
 import { useState } from "react";
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
+import { Link } from 'react-router-dom';
 import Sky from "./../../../public/images/perfect-sky.jpg";
 
 const client = new ApolloClient({
@@ -8,7 +9,7 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
-function Home() {
+function Profile() {
   return (
     <div
       className="create-container"
@@ -27,6 +28,15 @@ function Home() {
       }}
     >
       <ApolloProvider client={client}>
+      <div className="dropdown-menu-container">
+          <div className="dropdown">
+            <button className="dropbtn">Menu</button>
+            <div className="dropdown-content">
+              <Link to="/">Home</Link>
+              {/* Add more links as needed */}
+            </div>
+          </div>
+        </div>
         <div>
           <h1>Life Organizer! UnSuck your life?</h1>
           <section className='outline'>
@@ -56,4 +66,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default Profile;

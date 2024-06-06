@@ -77,8 +77,12 @@ function Login() {
         <div style={{ display: 'flex', justifyContent: 'space-between', width: '200px', marginTop: '20px' }}>
           <button onClick={handleSignIn}>Sign In</button>
           <button><Link to="/signup" style={{ color: 'black' }}>Sign Up</Link></button>
+          
         </div>
+        <button><Link to="/seclude" style={{color: 'purple'}}>Seclude</Link></button>
+        <button><Link to="/home" style={{color: 'purple'}}>Home</Link></button>
       </div>
+      
     </div>
   );
 }

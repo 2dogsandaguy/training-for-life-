@@ -4,7 +4,7 @@ import dayjs from 'dayjs';
 import './Seclude.css'; // Ensure this path is correct
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '@fortawesome/fontawesome-free/css/all.css';
-
+import { Link } from 'react-router-dom';
 const Seclude = () => {
   const [currentTime, setCurrentTime] = useState(dayjs().format("h:mm:ss A  MMM /D /YYYY"));
   const [tasks, setTasks] = useState([]);
@@ -94,7 +94,17 @@ const Seclude = () => {
   };
 
   return (
-    <div>
+  <div>
+    <div className="dropdown-menu-container">
+          <div className="dropdown">
+            <button className="dropbtn">Menu</button>
+            <div className="dropdown-content">
+              <Link to="/">Home</Link>
+              {/* Add more links as needed */}
+            </div>
+          </div>
+        </div>
+    
       <header className="p-5 mb-4 border-5 border-bottom border-dark text-center">
         <h1 className="display-3 ">Work Day Scheduler</h1>
         <p className="lead">A simple calendar app for scheduling your work day</p>
