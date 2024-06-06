@@ -1,0 +1,37 @@
+/* src/components/Seclude.css */
+.time-block {
+    margin-bottom: 20px;
+  }
+  
+  /* .Heavy{
+    font-weight: 800;
+  } */
+  .hour {
+    background-color: #000;
+    color:#e00dd2; 
+  }
+  .colors {
+    font-size: 35px;
+    font-weight: 900;
+  }
+  .past {
+    background-color: #2c0aed;
+  }
+  
+  .present {
+    background-color: #a41006;
+  }
+  
+  .future {
+    background-color: #77dd77;
+  }
+  
+  .saveBtn {
+    background-color: #06aed5;
+    color: white;
+  }
+  
+  .saveBtn:hover {
+    background-color: #0288a5;
+  }
+  

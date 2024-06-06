@@ -3,7 +3,9 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import Home from './components/Home';
-
+import Login from './components/Login';
+import Profile from './components/Profile';
+import Seclude from './components/Seclude'; 
 const httpLink = createHttpLink({
   uri: '/graphql',
   cache: new InMemoryCache(),
@@ -33,10 +35,11 @@ function App() {
     <Router>
         <Routes>
           {/* <Route path="/signup" element={<SignUp />} /> */}
+          <Route path="/login" element={<Login />} />           
           <Route path="*" element={<Home />} />
-          {/* <Route path="/profile" element={<Profile />} />
-          <Route path="/create-workout" element={<CreateWorkout />} />
-          <Route path="/view-history" element={<ViewHistory />} /> */}
+          <Route path="/profile" element={<Profile />} />
+          <Route path="seclude" element={<Seclude />} />
+          
         </Routes>
       </Router>
     </ApolloProvider>

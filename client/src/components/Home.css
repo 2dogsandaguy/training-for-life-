@@ -1,30 +1,56 @@
-/* App.css */
-html, body, #root {
-    height: 100%;
-    margin: 0;
-  }
-  
-  .create-container {
-    min-height: 100vh;
-    min-width: 100vw;
-  }
-  
-  .outline {
-    display: flex;
-    padding: 5px;
-    border-style: solid;
-    border-radius: 25px;
-    margin: 5px;
-    flex-direction: column;
-    align-items: center;
-    background-color: rgba(0, 0, 0, 0.5); 
-  }
-  
-  .outline li {
-    color: #ff0000; /* Red color for <li> text */
-  }
-  
-  .outline p {
-    color: #00ff00; /* Green color for <p> text */
-  }
-  
+/* src/components/Home.css */
+h1 {
+  color:black
+}
+.home-container {
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+
+.left-half, .right-half {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.left-half {
+  flex-direction: column;
+  background-color: rgba(255, 255, 255, 0.8); /* Optional: semi-transparent background */
+  padding: 20px;
+}
+
+.right-half {
+  flex-direction: column;
+  color: white; /* Ensure text is readable over the background image */
+  padding: 20px;
+  text-align: center; /* Center text within the right half */
+}
+
+.button-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 1em;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #4CAF50;
+  color: white;
+  text-align: center;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+button a {
+  text-decoration: none;
+  color: black;
+}
