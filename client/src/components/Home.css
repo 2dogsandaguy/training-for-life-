@@ -1,0 +1,30 @@
+/* App.css */
+html, body, #root {
+    height: 100%;
+    margin: 0;
+  }
+  
+  .create-container {
+    min-height: 100vh;
+    min-width: 100vw;
+  }
+  
+  .outline {
+    display: flex;
+    padding: 5px;
+    border-style: solid;
+    border-radius: 25px;
+    margin: 5px;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5); 
+  }
+  
+  .outline li {
+    color: #ff0000; /* Red color for <li> text */
+  }
+  
+  .outline p {
+    color: #00ff00; /* Green color for <p> text */
+  }
+  
