@@ -9,6 +9,7 @@ import Seclude from './components/Seclude';
 import SignUp from './components/SignUp'; 
 import Journal from './components/Journal';
 import Goals from './components/Goals';
+import Bills from './components/Bills';
  
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -46,6 +47,7 @@ function App() {
           <Route path="signUp" element={<SignUp />} />
           <Route path="journal" element={<Journal />} />
           <Route path="goals" element={<Goals />} />
+          <Route path="bills" element={<Bills />} />
 
         </Routes>
       </Router>

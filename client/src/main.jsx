@@ -9,6 +9,7 @@ import Seclude from './components/Seclude';
 import SignUp from './components/SignUp';
 import Journal from './components/Journal';
 import Goals from './components/Goals';
+import Bills from './components/Bills';
 
 
 
@@ -41,6 +42,10 @@ const router = createBrowserRouter([
         {
           path: "Goals",
           element: <Goals />
+        },
+        {
+          path: "Bills",
+          element: <Bills />
         }
       ],
     },
