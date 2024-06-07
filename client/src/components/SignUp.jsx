@@ -50,8 +50,9 @@ function SignUp() {
   };
   const containerStyle = {
     backgroundImage: `url(${Sky})`,
-    backgroundSize: 'contain',
-    backgroundRepeat: 'repeat', // You can choose 'repeat', 'repeat-x', or 'repeat-y' based on your preference
+    backgroundSize: 'cover',  // Ensure the image covers the entire background
+    backgroundPosition: 'center',  // Center the image
+    backgroundRepeat: 'no-repeat', // Do not repeat the image
     position: 'relative',
     height: '100vh',
     overflow: 'hidden',
@@ -72,7 +73,7 @@ function SignUp() {
     <>
       {message && <h2 style={{ color: message === 'Signup successful! Redirecting to home page...' ? 'green' : 'red', textAlign: 'center' }}>{message}</h2>}
       <header className="header">
-        <Link to="/Login">Back to Login</Link>
+        <Link to="/Home">Back to Home page</Link>
       </header>
 
       <div className="container" style={containerStyle}>
@@ -89,20 +90,25 @@ function SignUp() {
             <label className="form-label">Password:</label>
             <div className="input-group">
               <input type={showPassword ? "text" : "password"} className="form-control" value={password} onChange={(e) => setPassword(e.target.value)} />
-              <button type="button" className="btn btn-outline-secondary" onClick={togglePasswordVisibility}>
-                <i className={`fas ${showPassword ? 'fa-eye-slash' : 'fa-eye'}`}></i>
-              </button>
+              <div className="input-group-append">
+                <button type="button" className="btn btn-outline-secondary" onClick={togglePasswordVisibility}>
+                  <i className={`fas ${showPassword ? 'fa-eye-slash' : 'fa-eye'}`}></i>
+                </button>
+              </div>
             </div>
           </div>
           <div className="mb-3">
             <label className="form-label">Confirm Password:</label>
             <div className="input-group">
               <input type={showConfirmPassword ? "text" : "password"} className="form-control" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} />
-              <button type="button" className="btn btn-outline-secondary" onClick={toggleConfirmPasswordVisibility}>
-                <i className={`fas ${showConfirmPassword ? 'fa-eye-slash' : 'fa-eye'}`}></i>
-              </button>
+              <div className="input-group-append">
+                <button type="button" className="btn btn-outline-secondary" onClick={toggleConfirmPasswordVisibility}>
+                  <i className={`fas ${showConfirmPassword ? 'fa-eye-slash' : 'fa-eye'}`}></i>
+                </button>
+              </div>
             </div>
           </div>
+          
           <button type="submit" className="btn btn-primary">Sign Up</button>
         </form>
       </div>

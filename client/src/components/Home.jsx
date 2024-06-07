@@ -109,15 +109,18 @@ function Home() {
       position: 'relative',
       height: '100vh',
       width: '100%',
-      overflow: 'hidden'
+      overflow: 'hidden',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
     }}>
       <div className="home-container">
         <div className="left-half">
           <div className="button-container">
             <button><Link to="/login" style={{ color: 'black' }}>Login</Link></button>
             <button><Link to="/signUp" style={{ color: 'black' }}>Sign Up</Link></button>
-            <button><Link to="/profile" style={{ color: 'black' }}>Profile</Link></button>
-            <button><Link to="/seclude" style={{color: 'purple'}}>Seclude</Link></button>
+            {/* <button><Link to="/profile" style={{ color: 'black' }}>Profile</Link></button>
+            <button><Link to="/seclude" style={{color: 'purple'}}>Seclude</Link></button> */}
           </div>
         </div>
         <div className="right-half">

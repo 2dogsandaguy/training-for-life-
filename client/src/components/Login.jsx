@@ -44,7 +44,6 @@ function Login() {
       console.error('Sign-in error:', e);
     }
   };
-
   return (
     <div style={{
       backgroundImage: `url(${sky})`,
@@ -53,8 +52,10 @@ function Login() {
       backgroundRepeat: 'no-repeat',
       position: 'relative',
       height: '100vh',
-      width: '100%',
-      overflow: 'hidden'
+      overflow: 'hidden',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
     }}>
       <div style={{
         display: 'flex',
@@ -79,7 +80,7 @@ function Login() {
           <button><Link to="/signup" style={{ color: 'black' }}>Sign Up</Link></button>
           
         </div>
-        <button><Link to="/seclude" style={{color: 'purple'}}>Seclude</Link></button>
+        
         <button><Link to="/home" style={{color: 'purple'}}>Home</Link></button>
       </div>
       
