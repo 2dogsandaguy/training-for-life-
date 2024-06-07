@@ -4,18 +4,27 @@ import { ADD_USER } from '../../utils/mutations';
 import './SignUp.css';
 import { Link, useNavigate } from 'react-router-dom';
 import Sky from "./../../../public/images/perfect-sky.jpg";
+
+
 function SignUp() {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
   const [message, setMessage] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const [addUser] = useMutation(ADD_USER);
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
+    
+    if (password !== confirmPassword) {
+      setMessage('Passwords do not match!');
+      return;
+    }
     try {
       const { data } = await addUser({
         variables: {
@@ -36,6 +45,7 @@ function SignUp() {
       // Handle signup error`
       console.error("Mutation error:", err);
       console.log("Error details:", err.message, err.graphQLErrors, err.networkError);
+      setMessage('Signup failed. Please try again.');
     }
   };
   const containerStyle = {
@@ -50,10 +60,17 @@ function SignUp() {
     alignItems: 'center',
   };
 
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
+  const toggleConfirmPasswordVisibility = () => {
+    setShowConfirmPassword(!showConfirmPassword);
+  };
 
   return (
     <>
-      {message && <h2 style={{ color: 'green', textAlign: 'center' }}>{message}</h2>}
+      {message && <h2 style={{ color: message === 'Signup successful! Redirecting to home page...' ? 'green' : 'red', textAlign: 'center' }}>{message}</h2>}
       <header className="header">
         <Link to="/Login">Back to Login</Link>
       </header>
@@ -70,13 +87,25 @@ function SignUp() {
           </div>
           <div className="mb-3">
             <label className="form-label">Password:</label>
-            <input type="password" className="form-control" value={password} onChange={(e) => setPassword(e.target.value)} />
+            <div className="input-group">
+              <input type={showPassword ? "text" : "password"} className="form-control" value={password} onChange={(e) => setPassword(e.target.value)} />
+              <button type="button" className="btn btn-outline-secondary" onClick={togglePasswordVisibility}>
+                <i className={`fas ${showPassword ? 'fa-eye-slash' : 'fa-eye'}`}></i>
+              </button>
+            </div>
+          </div>
+          <div className="mb-3">
+            <label className="form-label">Confirm Password:</label>
+            <div className="input-group">
+              <input type={showConfirmPassword ? "text" : "password"} className="form-control" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} />
+              <button type="button" className="btn btn-outline-secondary" onClick={toggleConfirmPasswordVisibility}>
+                <i className={`fas ${showConfirmPassword ? 'fa-eye-slash' : 'fa-eye'}`}></i>
+              </button>
+            </div>
           </div>
           <button type="submit" className="btn btn-primary">Sign Up</button>
         </form>
       </div>
-
-
     </>
   );
 }
