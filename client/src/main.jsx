@@ -8,6 +8,10 @@ import Login from './components/Login';
 import Seclude from './components/Seclude';
 import SignUp from './components/SignUp';
 import Journal from './components/Journal';
+import Goals from './components/Goals';
+
+
+
 const router = createBrowserRouter([
     {
       path: '*',
@@ -33,6 +37,10 @@ const router = createBrowserRouter([
         {
           path: "Journal",
           element: <Journal />
+        },
+        {
+          path: "Goals",
+          element: <Goals />
         }
       ],
     },

@@ -1,0 +1,47 @@
+.goals-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .goals-header {
+    background-color: #343a40;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+  }
+  
+  .goals-entry-form {
+    margin-top: 20px;
+  }
+  
+  .goals-entry-form textarea {
+    width: 100%;
+    border-radius: 10px;
+    padding: 10px;
+  }
+  
+  .goals-entry-form button {
+    border-radius: 5px;
+  }
+  
+  .goals-entries {
+    margin-top: 40px;
+  }
+  
+  .goals-entry {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .goals-entry .card-body {
+    padding: 20px;
+  }
+  
+  .goals-entry .card-title {
+    font-size: 1.25em;
+    color: #6c757d;
+  }
+  
