@@ -47,7 +47,7 @@ function Profile() {
           <button className="logout" onClick={handleLogout}>
                 <span>Log Out</span>
               </button>
-          <Link to="Investments">
+          <Link to="/Investments">
             <section className='outline'>
               Investment
               <li>nivida</li>
@@ -56,13 +56,13 @@ function Profile() {
               <li>Webull</li>
             </section>
           </Link>
-          <Link to="Journal">
+          <Link to="/Journal">
             <div className='outline'>
               Journal
               <p> good day </p>
             </div>
           </Link>
-          <Link to="Bills">
+          <Link to="/Bills">
             <div className='outline'>
               Bills
             </div>
@@ -72,7 +72,7 @@ function Profile() {
               Seclude
             </div>
           </Link>
-          <Link to="Goals">
+          <Link to="/Goals">
             <div className='outline'>
               Dreams/Goals
             </div>

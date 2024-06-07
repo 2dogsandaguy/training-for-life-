@@ -99,7 +99,8 @@ const Seclude = () => {
           <div className="dropdown">
             <button className="dropbtn">Menu</button>
             <div className="dropdown-content">
-              <Link to="/">Home</Link>
+              <ul><Link to="/">Home</Link></ul>
+              <ul><Link to="/Profile"> Profile</Link></ul>
               {/* Add more links as needed */}
             </div>
           </div>

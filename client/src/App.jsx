@@ -7,6 +7,7 @@ import Login from './components/Login';
 import Profile from './components/Profile';
 import Seclude from './components/Seclude';
 import SignUp from './components/SignUp'; 
+import Journal from './components/Journal'; 
 const httpLink = createHttpLink({
   uri: '/graphql',
   cache: new InMemoryCache(),
@@ -41,7 +42,7 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="seclude" element={<Seclude />} />
           <Route path="signUp" element={<SignUp />} />
-
+          <Route path="journal" element={<Journal />} />
         </Routes>
       </Router>
     </ApolloProvider>

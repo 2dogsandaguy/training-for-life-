@@ -7,7 +7,7 @@ import Home from './components/Home'; //
 import Login from './components/Login';
 import Seclude from './components/Seclude';
 import SignUp from './components/SignUp';
-
+import Journal from './components/Journal';
 const router = createBrowserRouter([
     {
       path: '*',
@@ -29,6 +29,10 @@ const router = createBrowserRouter([
         {
           path: "SignUp",
           element: <SignUp />
+        },
+        {
+          path: "Journal",
+          element: <Journal />
         }
       ],
     },
