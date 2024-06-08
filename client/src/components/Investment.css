@@ -1,0 +1,50 @@
+.investment-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .investment-header {
+    background-color: #343a40;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+  }
+  
+  .investment-entry-form {
+    margin-top: 20px;
+  }
+  
+  .investment-entry-form input {
+    width: 100%;
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 10px;
+  }
+  
+  .investment-entry-form button {
+    width: 100%;
+    margin-top: 10px;
+    border-radius: 5px;
+  }
+  
+  .investment-entries {
+    margin-top: 40px;
+  }
+  
+  .investment-entry {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .investment-entry .card-body {
+    padding: 20px;
+  }
+  
+  .investment-entry .card-title {
+    font-size: 1.25em;
+    color: #6c757d;
+  }
+  

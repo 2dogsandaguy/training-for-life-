@@ -10,6 +10,7 @@ import SignUp from './components/SignUp';
 import Journal from './components/Journal';
 import Goals from './components/Goals';
 import Bills from './components/Bills';
+import Investment from './components/Investment';
  
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -48,6 +49,7 @@ function App() {
           <Route path="journal" element={<Journal />} />
           <Route path="goals" element={<Goals />} />
           <Route path="bills" element={<Bills />} />
+          <Route path="investment" element={<Investment />} />
 
         </Routes>
       </Router>

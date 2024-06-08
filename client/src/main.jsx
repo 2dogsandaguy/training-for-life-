@@ -10,6 +10,7 @@ import SignUp from './components/SignUp';
 import Journal from './components/Journal';
 import Goals from './components/Goals';
 import Bills from './components/Bills';
+import Investment from './components/Investment';
 
 
 
@@ -46,6 +47,10 @@ const router = createBrowserRouter([
         {
           path: "Bills",
           element: <Bills />
+        },
+        {
+          path: "Investment",
+          element: <Investment />
         }
       ],
     },

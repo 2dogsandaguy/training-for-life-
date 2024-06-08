@@ -47,7 +47,7 @@ function Profile() {
           <button className="logout" onClick={handleLogout}>
                 <span>Log Out</span>
               </button>
-          <Link to="/Investments">
+          <Link to="/Investment">
             <section className='outline'>
               Investment
               <li>nivida</li>
