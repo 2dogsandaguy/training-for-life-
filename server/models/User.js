@@ -19,7 +19,13 @@ const userSchema = new Schema({
   password: {
     type: String,
     required: true,
-  }
+  },
+  journals: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Journal',
+    }
+  ],
 //   ,
 //   weightRoutines: [{type: mongoose.Schema.Types.ObjectId,ref:'Weight'}],
 //   cardioRoutines: [{type: mongoose.Schema.Types.ObjectId,ref:'Cardio'}],

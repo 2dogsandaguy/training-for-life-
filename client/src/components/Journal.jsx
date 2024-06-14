@@ -1,31 +1,60 @@
 import React, { useState, useEffect } from 'react';
 import './Journal.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { useMutation, useQuery } from '@apollo/client';
+import { SET_JOURNAL, DELETE_JOURNAL } from '../../utils/mutations';
+import { GET_ME } from '../../utils/queries';
+import AuthService from '../../utils/auth';
 
 const Journal = () => {
   const [entries, setEntries] = useState([]);
   const [newEntry, setNewEntry] = useState('');
+  const { loading, data, refetch } = useQuery(GET_ME);
+  const [setJournal] = useMutation(SET_JOURNAL);
+  const [deleteJournal] = useMutation(DELETE_JOURNAL);
 
   useEffect(() => {
     const storedEntries = JSON.parse(localStorage.getItem('journalEntries')) || [];
     setEntries(storedEntries);
   }, []);
 
+  useEffect(() => {
+    if (data && data.me && data.me.journals) {
+      setEntries(data.me.journals);
+    }
+  }, [data]);
+
   const handleEntryChange = (e) => {
     setNewEntry(e.target.value);
   };
 
-  const handleSaveEntry = () => {
-    const updatedEntries = [...entries, { text: newEntry, date: new Date().toLocaleString() }];
-    setEntries(updatedEntries);
-    setNewEntry('');
-    localStorage.setItem('journalEntries', JSON.stringify(updatedEntries));
+  const handleSaveEntry = async () => {
+    const createdAt = new Date().toISOString();
+    try {
+      const { data: newData } = await setJournal({
+        variables: {
+          journal: newEntry,
+          createdAt: createdAt,
+        },
+      });
+
+      await refetch(); // Ensure the latest data is fetched
+      setNewEntry('');
+    } catch (error) {
+      console.error("Error saving journal entry:", error);
+    }
   };
 
-  const handleClearEntries = () => {
-    setEntries([]);
-    localStorage.removeItem('journalEntries');
+  const handleDeleteEntry = async (journalId) => {
+    try {
+      await deleteJournal({ variables: { journalId } });
+      await refetch(); // Ensure the latest data is fetched
+    } catch (error) {
+      console.error("Error deleting journal entry:", error);
+    }
   };
+
+  if (loading) return <p>Loading...</p>;
 
   return (
     <div className="journal-container">
@@ -42,15 +71,15 @@ const Journal = () => {
           placeholder="Write your journal entry here..."
         />
         <button className="btn btn-primary mt-3" onClick={handleSaveEntry}>Save Entry</button>
-        <button className="btn btn-danger mt-3" onClick={handleClearEntries}>Clear All Entries</button>
       </div>
       <div className="journal-entries mt-5">
         {entries.length === 0 && <p>No entries yet. Start writing your first journal entry!</p>}
-        {entries.map((entry, index) => (
-          <div className="journal-entry card mb-3" key={index}>
+        {entries.map((entry) => (
+          <div className="journal-entry card mb-3" key={entry._id}>
             <div className="card-body">
-              <p className="card-text">{entry.text}</p>
-              <footer className="blockquote-footer">{entry.date}</footer>
+              <p className="card-text">{entry.journal}</p>
+              <footer className="blockquote-footer">{new Date(entry.createdAt).toLocaleString()}</footer>
+              <button className="btn btn-danger mt-3" onClick={() => handleDeleteEntry(entry._id)}>Delete Entry</button>
             </div>
           </div>
         ))}
