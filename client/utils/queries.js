@@ -14,3 +14,17 @@ export const GET_ME = gql`
     }
   }
 `;
+export const GET_BILLS = gql`
+  query getBills {
+    me {
+      _id
+      bills {
+        _id
+        category
+        customCategory
+        amount
+        date
+      }
+    }
+  }
+  `;

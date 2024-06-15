@@ -26,6 +26,12 @@ const userSchema = new Schema({
       ref: 'Journal',
     }
   ],
+  bills: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Bill',
+    },
+  ],
 //   ,
 //   weightRoutines: [{type: mongoose.Schema.Types.ObjectId,ref:'Weight'}],
 //   cardioRoutines: [{type: mongoose.Schema.Types.ObjectId,ref:'Cardio'}],

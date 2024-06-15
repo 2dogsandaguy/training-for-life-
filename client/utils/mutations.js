@@ -52,3 +52,23 @@ export const ADD_USER = gql`
     }
   }
 `;
+
+export const SET_BILL = gql`
+  mutation setBill($category: String!, $customCategory: String, $amount: Float!, $date: String!) {
+    setBill(category: $category, customCategory: $customCategory, amount: $amount, date: $date) {
+      _id
+      category
+      customCategory
+      amount
+      date
+    }
+  }
+`;
+
+export const DELETE_BILL = gql`
+  mutation deleteBill($billId: ID!) {
+    deleteBill(billId: $billId) {
+      _id
+    }
+  }
+`;

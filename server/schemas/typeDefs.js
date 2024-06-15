@@ -15,6 +15,8 @@ const typeDefs = `
     addUser(username: String!, email: String!, password: String!): Auth
     setJournal(journal: String!, createdAt: String!): User
     deleteJournal(journalId: ID!): User
+    setBill(category: String!, customCategory: String, amount: Float!, date: String!): Bill
+    deleteBill(billId: ID!): Bill
   }
 
   type User {
@@ -22,6 +24,7 @@ const typeDefs = `
     username: String
     email: String
     journals: [Journal]
+    bills: [Bill]
   }
 
   type Journal {
@@ -30,9 +33,20 @@ const typeDefs = `
     createdAt: String
   }
 
+  type Bill {
+    _id: ID
+    category: String
+    customCategory: String
+    amount: Float
+    date: String
+    userId: ID
+  }
+
   type Query {
     me: User
   }
 `;
+
+
 
 module.exports = typeDefs;
