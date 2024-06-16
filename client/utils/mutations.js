@@ -89,10 +89,7 @@ export const DELETE_INVESTMENT = gql`
   mutation deleteInvestment($investmentId: ID!) {
     deleteInvestment(investmentId: $investmentId) {
       _id
-      type
-      url
-      amount
-      date
+      
     }
   }
 `;
