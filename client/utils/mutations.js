@@ -72,3 +72,27 @@ export const DELETE_BILL = gql`
     }
   }
 `;
+
+export const SET_INVESTMENT = gql`
+  mutation setInvestment($type: String!, $url: String, $amount: Float!, $date: String!) {
+    setInvestment(type: $type, url: $url, amount: $amount, date: $date) {
+      _id
+      type
+      url
+      amount
+      date
+    }
+  }
+`;
+
+export const DELETE_INVESTMENT = gql`
+  mutation deleteInvestment($investmentId: ID!) {
+    deleteInvestment(investmentId: $investmentId) {
+      _id
+      type
+      url
+      amount
+      date
+    }
+  }
+`;

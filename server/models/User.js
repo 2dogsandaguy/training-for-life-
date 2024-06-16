@@ -32,6 +32,12 @@ const userSchema = new Schema({
       ref: 'Bill',
     },
   ],
+  investments: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Investment',
+    },
+  ],
 //   ,
 //   weightRoutines: [{type: mongoose.Schema.Types.ObjectId,ref:'Weight'}],
 //   cardioRoutines: [{type: mongoose.Schema.Types.ObjectId,ref:'Cardio'}],

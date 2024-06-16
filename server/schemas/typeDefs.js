@@ -17,6 +17,8 @@ const typeDefs = `
     deleteJournal(journalId: ID!): User
     setBill(category: String!, customCategory: String, amount: Float!, date: String!): Bill
     deleteBill(billId: ID!): Bill
+    setInvestment(type: String!, url: String, amount: Float!, date: String!): Investment
+    deleteInvestment(investmentId: ID!): Investment
   }
 
   type User {
@@ -25,6 +27,7 @@ const typeDefs = `
     email: String
     journals: [Journal]
     bills: [Bill]
+    investments: [Investment]
   }
 
   type Journal {
@@ -37,6 +40,15 @@ const typeDefs = `
     _id: ID
     category: String
     customCategory: String
+    amount: Float
+    date: String
+    userId: ID
+  }
+
+  type Investment {
+    _id: ID
+    type: String
+    url: String
     amount: Float
     date: String
     userId: ID

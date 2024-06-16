@@ -1,4 +1,4 @@
-const { User, Journal, Bill } = require("../models");
+const { User, Journal, Bill, Investment } = require("../models");
 const bcrypt = require("bcrypt");
 const { signToken, AuthenticationError } = require("../utils/auth");
 
@@ -9,6 +9,7 @@ const resolvers = {
         const userData = await User.findOne({ _id: context.user._id })
           .populate("journals")
           .populate("bills")
+          .populate("investments")
           .select("-__v -password");
         console.log("User Data:", userData);
         return userData;
@@ -100,9 +101,41 @@ const resolvers = {
       }
       throw new AuthenticationError('Not logged in');
     },
+    setInvestment: async (parent, { type, url, amount, date }, context) => {
+      if (context.user) {
+        try {
+          const newInvestment = await Investment.create({
+            type,
+            url,
+            amount,
+            date,
+            userId: context.user._id,
+          });
 
+          await User.findByIdAndUpdate(context.user._id, { $push: { investments: newInvestment._id } });
+          
+          return newInvestment;
+        } catch (error) {
+          console.error("Error saving investment entry:", error);
+          throw new ApolloError('Error saving investment entry');
+        }
+      }
+      throw new AuthenticationError('Not logged in');
+    },
+    deleteInvestment: async (parent, { investmentId }, context) => {
+      if (context.user) {
+        const investment = await Investment.findById(investmentId);
+        if (investment.userId.toString() !== context.user._id) {
+          throw new AuthenticationError('Not authorized');
+        }
+        await Investment.findByIdAndDelete(investmentId);
+        await User.findByIdAndUpdate(context.user._id, { $pull: { investments: investmentId } });
+
+        return investment;
+      }
+      throw new AuthenticationError('Not logged in');
+    },
   },
-  
 };
 
 module.exports = resolvers;
