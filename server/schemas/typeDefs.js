@@ -19,6 +19,8 @@ const typeDefs = `
     deleteBill(billId: ID!): Bill
     setInvestment(type: String!, url: String, amount: Float!, date: String!): Investment
     deleteInvestment(investmentId: ID!): Investment
+    saveTasks(tasks: [TaskInput]!): [Task]
+    clearTasks: [Task]
   }
 
   type User {
@@ -28,6 +30,7 @@ const typeDefs = `
     journals: [Journal]
     bills: [Bill]
     investments: [Investment]
+    tasks: [Task]
   }
 
   type Journal {
@@ -52,6 +55,18 @@ const typeDefs = `
     amount: Float
     date: String
     userId: ID
+  }
+
+  type Task {
+    _id: ID!
+    id: String!
+    task: String!
+    user: User!
+  }
+  
+  input TaskInput {
+    id: String!
+    task: String!
   }
 
   type Query {

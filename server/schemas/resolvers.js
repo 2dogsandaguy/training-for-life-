@@ -1,4 +1,4 @@
-const { User, Journal, Bill, Investment } = require("../models");
+const { User, Journal, Bill, Investment, Task } = require("../models");
 const bcrypt = require("bcrypt");
 const { signToken, AuthenticationError } = require("../utils/auth");
 
@@ -10,6 +10,7 @@ const resolvers = {
           .populate("journals")
           .populate("bills")
           .populate("investments")
+          .populate("tasks")
           .select("-__v -password");
         console.log("User Data:", userData);
         return userData;
@@ -134,6 +135,32 @@ const resolvers = {
         return investment;
       }
       throw new AuthenticationError('Not logged in');
+    },
+    saveTasks: async (_, { tasks }, context) => {
+      if (!context.user) {
+        throw new AuthenticationError('Not authenticated');
+      }
+      // Clear existing tasks for the user
+      await Task.deleteMany({ user: context.user._id });
+
+      // Map tasks to include the user reference
+      const tasksWithUser = tasks.map(task => ({ ...task, user: context.user._id }));
+
+      // Save new tasks
+      const savedTasks = await Task.insertMany(tasksWithUser);
+
+      // Update the user's tasks reference
+      await User.findByIdAndUpdate(context.user._id, { tasks: savedTasks.map(task => task._id) });
+
+      return savedTasks;
+    },
+    clearTasks: async (_, args, context) => {
+      if (!context.user) {
+        throw new AuthenticationError('Not authenticated');
+      }
+      await Task.deleteMany({ user: context.user._id });
+      await User.findByIdAndUpdate(context.user._id, { tasks: [] });
+      return [];
     },
   },
 };

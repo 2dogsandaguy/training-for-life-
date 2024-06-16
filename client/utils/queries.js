@@ -42,3 +42,13 @@ export const GET_BILLS = gql`
     }
   }
   `;
+
+  export const GET_TASKS = gql`
+  query getTasks {
+    tasks {
+      _id
+      id
+      task
+    }
+  }
+`;

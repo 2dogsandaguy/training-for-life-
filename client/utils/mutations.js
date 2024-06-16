@@ -93,3 +93,23 @@ export const DELETE_INVESTMENT = gql`
     }
   }
 `;
+
+export const SAVE_TASKS = gql`
+  mutation saveTasks($tasks: [TaskInput]!) {
+    saveTasks(tasks: $tasks) {
+      _id
+      id
+      task
+    }
+  }
+`;
+
+export const CLEAR_TASKS = gql`
+  mutation clearTasks {
+    clearTasks {
+      _id
+      id
+      task
+    }
+  }
+`;
